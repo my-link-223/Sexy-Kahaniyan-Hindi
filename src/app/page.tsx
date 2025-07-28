@@ -42,7 +42,7 @@ export default function Home() {
               Discover daily new tales of romance and fantasy.
             </p>
             <Button asChild size="lg" className="mt-8 rounded-full group bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="#daily-updates">
+              <Link href="/stories">
                 <Flame className="mr-2 h-5 w-5 group-hover:animate-pulse" /> Read Today’s Hot Story
               </Link>
             </Button>
@@ -83,7 +83,7 @@ export default function Home() {
               Explore Categories
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-              {categories.map((category) => (
+              {categories.slice(0, 10).map((category) => (
                 <Link href={`/category/${encodeURIComponent(category.title)}`} key={category.title}>
                   <Card className="group overflow-hidden relative text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                     <CardContent className="p-0">
@@ -96,7 +96,7 @@ export default function Home() {
                         data-ai-hint={category.aiHint}
                       />
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300 flex items-center justify-center">
-                        <h3 className="font-headline text-xl font-bold text-white">
+                        <h3 className="font-headline text-xl font-bold text-white p-2">
                           {category.title}
                         </h3>
                       </div>
@@ -104,6 +104,13 @@ export default function Home() {
                   </Card>
                 </Link>
               ))}
+            </div>
+             <div className="text-center mt-12">
+              <Button variant="outline" asChild>
+                <Link href="/categories">
+                  View All Categories <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -120,7 +127,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-12">
               <Button variant="outline" asChild>
-                <Link href="#">
+                <Link href="/stories">
                   View All Stories <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

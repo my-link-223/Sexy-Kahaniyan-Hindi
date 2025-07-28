@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { BookHeart, Menu } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 
 const navLinks = [
-    { href: "#trending", label: "Trending" },
-    { href: "#categories", label: "Categories" },
+    { href: "/", label: "Home" },
+    { href: "/stories", label: "All Stories" },
+    { href: "/categories", label: "Categories" },
 ];
 
 export function Header() {
@@ -36,12 +37,18 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+                <Link href="/" className="mr-6 flex items-center space-x-2 p-4">
+                    <BookHeart className="h-6 w-6 text-primary" />
+                    <span className="font-bold font-headline text-lg">Erotic Tales</span>
+                </Link>
               <div className="p-4">
                 <nav className="flex flex-col space-y-4">
                 {navLinks.map(link => (
-                    <Link key={link.href} href={link.href} className="text-lg transition-colors hover:text-primary">
+                  <SheetClose asChild key={link.href}>
+                    <Link href={link.href} className="text-lg transition-colors hover:text-primary">
                         {link.label}
                     </Link>
+                  </SheetClose>
                 ))}
                 </nav>
               </div>
