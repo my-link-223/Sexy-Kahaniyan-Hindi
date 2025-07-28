@@ -254,7 +254,7 @@ export const stories: Story[] = [
     readingTime: "25 min read",
     tags: ["#ट्रेन", "#चुदाई", "#अजनबी"],
     category: "ट्रेन या बस में",
-    image: "https://placehold.co/600x400.png",
+    image: 'https://placehold.co/600x400.png',
     aiHint: "sensual journey",
     content: `नमस्कार दोस्तो, मैं विराज, कानपुर का रहने वाला एक 21 साल का लड़का हूँ। मेरा रंग गोरा है, लंबाई 5 फुट 8 इंच है और मैं देखने में काफी स्मार्ट हूँ। मेरे लंड का साइज काफी अच्छा है, यह 7 इंच लंबा और 3 इंच मोटा है। आज आप लोगों के सामने अपनी सेक्स कहानी लेकर आया हूँ, जिसमें मैंने लिखा है कि अपनी बुआ की ननद की लड़की, रिचा, की चुदाई कैसे की।
 
@@ -459,3 +459,6 @@ export const categories = [
     { title: "गुप्त मुलाकातें", image: "https://placehold.co/300x400.png", aiHint: 'secret meeting' },
 ];
 
+
+
+    
