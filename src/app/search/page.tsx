@@ -3,15 +3,43 @@ import { StoryCard } from '@/components/story-card';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Suspense } from 'react';
+import { getTransliteratedQuery } from './actions';
 
-function SearchResults({ query }: { query: string }) {
+async function SearchResults({ query }: { query: string }) {
   const decodedQuery = decodeURIComponent(query || '');
 
-  const results = stories.filter(story =>
-    story.title.toLowerCase().includes(decodedQuery.toLowerCase()) ||
-    story.content.toLowerCase().includes(decodedQuery.toLowerCase()) ||
-    story.tags.some(tag => tag.toLowerCase().includes(decodedQuery.toLowerCase()))
-  );
+  let searchTerms = [decodedQuery];
+
+  if (decodedQuery) {
+    try {
+      const transliterationResult = await getTransliteratedQuery({ query: decodedQuery });
+      if (transliterationResult && transliterationResult.hindiQueries) {
+        searchTerms = [...new Set([...searchTerms, ...transliterationResult.hindiQueries])];
+      }
+    } catch(e) {
+      console.error("Could not get transliterated query", e)
+    }
+  }
+  
+  const lowerCaseSearchTerms = searchTerms.map(t => t.toLowerCase()).filter(Boolean);
+
+  const results = lowerCaseSearchTerms.length > 0 ? stories.filter(story => {
+    const storyTitleLower = story.title.toLowerCase();
+    const storyContentLower = story.content.toLowerCase();
+    const storyTagsLower = story.tags.map(t => t.toLowerCase());
+
+    return lowerCaseSearchTerms.some(term => 
+        storyTitleLower.includes(term) ||
+        storyContentLower.includes(term) ||
+        storyTagsLower.some(tag => tag.includes(term))
+    )
+  }) : [];
+  
+  const uniqueResults = results.filter((story, index, self) =>
+    index === self.findIndex((s) => (
+      s.id === story.id
+    ))
+  )
 
   return (
     <>
@@ -21,14 +49,14 @@ function SearchResults({ query }: { query: string }) {
         </h1>
         {decodedQuery && (
             <p className="text-muted-foreground mt-2">
-                Found {results.length} stories for &quot;{decodedQuery}&quot;
+                Found {uniqueResults.length} stories for &quot;{decodedQuery}&quot;
             </p>
         )}
       </header>
 
-      {results.length > 0 ? (
+      {uniqueResults.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {results.map((story) => (
+          {uniqueResults.map((story) => (
             <StoryCard key={story.id} story={story} />
           ))}
         </div>
@@ -51,7 +79,7 @@ export default function SearchPage({ searchParams }: { searchParams: { q: string
       <Header />
       <main className="flex-1 py-12 md:py-16">
         <div className="container">
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div className="text-center">Loading...</div>}>
                 <SearchResults query={searchParams.q} />
             </Suspense>
         </div>
