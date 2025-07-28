@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { BookHeart, Menu } from 'lucide-react';
+import { BookHeart, Menu, Search } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
+import { SearchInput } from './search-input';
 
 const navLinks = [
     { href: "/", label: "Home" },
@@ -29,6 +30,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
+          <SearchInput />
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
