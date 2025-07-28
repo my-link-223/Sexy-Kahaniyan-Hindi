@@ -428,7 +428,7 @@ export const stories: Story[] = [
 
 export const categories = [
     { title: "आंटी", image: "https://placehold.co/300x400.png", aiHint: 'mature woman' },
-    { title: "अजनबी", image: "https://placehold.co/300x400.png", aiHint: 'strangers meeting' },
+    { title: "अजनबी", image: "https://storage.googleapis.com/gweb-aip-dev.appspot.com/private/us-central1-gcp-testing-365215-42065a4c5a914c24/user_images/93f185b3-34e8-466a-b286-9a2872337d32.png", aiHint: 'strangers meeting' },
     { title: "देवर-भाभी", image: "https://placehold.co/300x400.png", aiHint: 'family romance' },
     { title: "पति-पत्नी", image: "https://placehold.co/300x400.png", aiHint: 'husband wife' },
     { title: "बॉयफ्रेंड-गर्लफ्रेंड", image: "https://placehold.co/300x400.png", aiHint: 'young couple' },
@@ -458,3 +458,4 @@ export const categories = [
     { title: "दूसरा प्यार", image: "https://placehold.co/300x400.png", aiHint: 'second chance' },
     { title: "गुप्त मुलाकातें", image: "https://placehold.co/300x400.png", aiHint: 'secret meeting' },
 ];
+
