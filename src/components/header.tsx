@@ -7,8 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 const navLinks = [
     { href: "#trending", label: "Trending" },
     { href: "#categories", label: "Categories" },
-    { href: "/admin/story-ideas", label: "AI Ideas" },
-    { href: "#", label: "18+ FAQ" },
 ];
 
 export function Header() {
