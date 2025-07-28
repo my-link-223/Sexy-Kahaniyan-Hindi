@@ -8,6 +8,7 @@ const navLinks = [
     { href: "/", label: "Home" },
     { href: "/stories", label: "All Stories" },
     { href: "/categories", label: "Categories" },
+    { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -17,7 +18,7 @@ export function Header() {
         <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <BookHeart className="h-6 w-6 text-primary" />
-            <span className="font-bold font-headline text-lg">Erotic Tales</span>
+            <span className="font-bold font-headline text-lg">Sexy Kahaniyan Hindi</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.map(link => (
@@ -39,7 +40,7 @@ export function Header() {
             <SheetContent side="right">
                 <Link href="/" className="mr-6 flex items-center space-x-2 p-4">
                     <BookHeart className="h-6 w-6 text-primary" />
-                    <span className="font-bold font-headline text-lg">Erotic Tales</span>
+                    <span className="font-bold font-headline text-lg">Sexy Kahaniyan Hindi</span>
                 </Link>
               <div className="p-4">
                 <nav className="flex flex-col space-y-4">

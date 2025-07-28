@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AgeGateModal } from '@/components/age-gate-modal';
 
 export const metadata: Metadata = {
-  title: 'Erotic Tales',
+  title: 'Sexy Kahaniyan Hindi',
   description: 'Daily-updated adult content platform with sensual Hindi stories.',
 };
 
