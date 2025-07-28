@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { StoryCard } from "@/components/story-card";
 import { FontSizeAdjuster } from "./font-size-adjuster";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight, Bookmark, Calendar, Heart, MessageCircle, UserCircle } from "lucide-react";
+import { Bookmark, Calendar, Heart, MessageCircle, UserCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 type StoryPageClientProps = {
@@ -87,14 +87,6 @@ export function StoryPageClient({ story, relatedStories }: StoryPageClientProps)
                 <Bookmark className={cn("h-5 w-5", isBookmarked && "fill-current text-accent")} />
                 <span className="sr-only">Bookmark</span>
               </Button>
-            </div>
-            <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" asChild>
-                    <Link href="#"><ArrowLeft className="mr-1 h-4 w-4"/> Prev</Link>
-                </Button>
-                 <Button variant="outline" size="sm" asChild>
-                    <Link href="#">Next <ArrowRight className="ml-1 h-4 w-4"/></Link>
-                </Button>
             </div>
           </div>
         </article>
