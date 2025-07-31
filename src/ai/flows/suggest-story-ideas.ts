@@ -22,6 +22,7 @@ const SuggestStoryIdeasInputSchema = z.object({
     .number()
     .default(3)
     .describe('The number of story ideas to generate.'),
+  language: z.string().default('English').describe('The language for the generated story ideas (e.g., Hindi, English, Gujarati).'),
 });
 export type SuggestStoryIdeasInput = z.infer<typeof SuggestStoryIdeasInputSchema>;
 
@@ -44,12 +45,12 @@ const suggestStoryIdeasPrompt = ai.definePrompt({
   name: 'suggestStoryIdeasPrompt',
   input: {schema: SuggestStoryIdeasInputSchema},
   output: {schema: SuggestStoryIdeasOutputSchema},
-  prompt: `You are a creative story idea generator for a mature audience (18+).  Based on the trending topics and user interests provided, generate {{numberOfSuggestions}} story ideas, each with a title, meta description and SEO keywords.  The story ideas should be sensual, romantic, and designed to engage readers.
+  prompt: `You are a creative story idea generator for a mature audience (18+).  Based on the trending topics and user interests provided, generate {{numberOfSuggestions}} story ideas in the {{language}} language. Each idea must have a title, meta description, and SEO keywords. The story ideas should be sensual, romantic, and designed to engage readers.
 
 Trending Topics: {{{trendingTopics}}}
 User Interests: {{{userInterests}}}
 
-Format your response as a JSON array of objects with 'title', 'metaDescription', and 'keywords' fields.
+Format your response as a JSON array of objects with 'title', 'metaDescription', and 'keywords' fields. The entire response, including keys and values, must be in the specified {{language}}.
 `,
 });
 

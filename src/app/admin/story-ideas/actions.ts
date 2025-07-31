@@ -11,6 +11,7 @@ const SuggestStoryIdeasInputSchema = z.object({
   trendingTopics: z.string(),
   userInterests: z.string(),
   numberOfSuggestions: z.number().min(1).max(5),
+  language: z.string(),
 });
 
 export async function getStorySuggestions(

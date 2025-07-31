@@ -14,14 +14,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2, Wand2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const formSchema = z.object({
   trendingTopics: z.string().min(3, "Please enter at least one trending topic."),
   userInterests: z.string().min(3, "Please enter at least one user interest."),
   numberOfSuggestions: z.coerce.number().min(1).max(5).default(3),
+  language: z.string({ required_error: "Please select a language." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const languageOptions = [
+    { value: "English", label: "English" },
+    { value: "Hindi", label: "हिंदी (Hindi)" },
+    { value: "Gujarati", label: "ગુજરાતી (Gujarati)" },
+]
 
 export function StoryIdeasClient() {
   const [suggestions, setSuggestions] = useState<SuggestStoryIdeasOutput | null>(null);
@@ -33,6 +41,7 @@ export function StoryIdeasClient() {
       trendingTopics: "Secret romance, Forbidden love",
       userInterests: "Office affairs, College stories",
       numberOfSuggestions: 3,
+      language: "English",
     },
   });
 
@@ -87,19 +96,43 @@ export function StoryIdeasClient() {
                   )}
                 />
               </div>
-              <FormField
-                control={form.control}
-                name="numberOfSuggestions"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Number of Suggestions (1-5)</FormLabel>
-                    <FormControl>
-                      <Input type="number" min="1" max="5" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid md:grid-cols-2 gap-6">
+                <FormField
+                    control={form.control}
+                    name="numberOfSuggestions"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Number of Suggestions (1-5)</FormLabel>
+                        <FormControl>
+                        <Input type="number" min="1" max="5" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="language"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Language</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a language" />
+                                </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    {languageOptions.map(option => (
+                                        <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+              </div>
               <Button type="submit" disabled={isLoading} className="w-full md:w-auto">
                 {isLoading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
