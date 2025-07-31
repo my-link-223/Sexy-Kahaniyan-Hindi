@@ -16,7 +16,9 @@ export function Footer() {
           </nav>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Sexy Kahaniyan Hindi. All rights reserved.</p>
+          <Link href="/admin/dashboard">
+            <p>&copy; {new Date().getFullYear()} Sexy Kahaniyan Hindi. All rights reserved.</p>
+          </Link>
           <p className="mt-2">This website contains adult material and is intended for individuals 18 years of age or older.</p>
         </div>
       </div>
