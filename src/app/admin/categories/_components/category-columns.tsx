@@ -1,3 +1,4 @@
+
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
@@ -27,36 +28,48 @@ import {
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
+import { useState } from "react"
 
-const DeleteAction = ({ categoryId }: { categoryId: number }) => {
+const DeleteAction = ({ categoryId, onDeleted }: { categoryId: number, onDeleted: () => void }) => {
     const { toast } = useToast();
     const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
 
     const onDelete = async () => {
         try {
             const response = await fetch(`/api/categories/${categoryId}`, {
                 method: 'DELETE',
             });
-            if (!response.ok) {
-                throw new Error("Failed to delete category");
+            if (response.status !== 200 && response.status !== 204) {
+                 const errorData = await response.json().catch(() => ({ error: "Failed to delete category with no specific error message." }));
+                throw new Error(errorData.error || "Failed to delete category");
             }
             toast({ title: "Category deleted successfully" });
+            onDeleted();
             router.refresh();
-            // A full page reload might be better to reflect changes immediately
-            window.location.reload();
         } catch (error) {
             toast({
                 title: "Error deleting category",
                 description: (error as Error).message,
                 variant: "destructive",
             });
+        } finally {
+            setIsOpen(false);
         }
     };
 
     return (
-        <AlertDialog>
+        <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
-                <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent">Delete</div>
+                <div 
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsOpen(true);
+                    }}
+                    className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent text-destructive"
+                >
+                    Delete
+                </div>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
@@ -66,8 +79,8 @@ const DeleteAction = ({ categoryId }: { categoryId: number }) => {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={onDelete} className="bg-destructive hover:bg-destructive/90">Continue</AlertDialogAction>
+                    <AlertDialogCancel onClick={(e) => e.stopPropagation()}>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={(e) => { e.stopPropagation(); onDelete(); }} className="bg-destructive hover:bg-destructive/90">Continue</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
@@ -109,8 +122,18 @@ export const categoryColumns: ColumnDef<Category>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const category = row.original
+        cell: ({ row, table }) => {
+            const category = row.original;
+            const router = useRouter();
+            
+            const handleDeleted = () => {
+                const data = table.options.data;
+                const newData = data.filter(d => d.id !== category.id);
+                // This is a way to trigger a re-render in the table
+                table.options.meta?.setData(newData);
+                router.refresh();
+            }
+
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -128,7 +151,7 @@ export const categoryColumns: ColumnDef<Category>[] = [
                             <Link href={`/admin/categories/edit/${category.id}`}>Edit Category</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DeleteAction categoryId={category.id} />
+                         <DeleteAction categoryId={category.id} onDeleted={handleDeleted} />
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

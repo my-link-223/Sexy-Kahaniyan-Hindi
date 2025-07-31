@@ -1,3 +1,4 @@
+
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
@@ -27,37 +28,49 @@ import {
   } from "@/components/ui/alert-dialog"
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 
-const DeleteAction = ({ storyId }: { storyId: number }) => {
+const DeleteAction = ({ storyId, onDeleted }: { storyId: number, onDeleted: () => void }) => {
     const { toast } = useToast();
     const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
 
     const onDelete = async () => {
         try {
             const response = await fetch(`/api/stories/${storyId}`, {
                 method: 'DELETE',
             });
-            if (!response.ok) {
-                throw new Error("Failed to delete story");
+            if (response.status !== 200 && response.status !== 204) {
+                const errorData = await response.json().catch(() => ({ error: "Failed to delete story with no specific error message." }));
+                throw new Error(errorData.error || "Failed to delete story");
             }
             toast({ title: "Story deleted successfully" });
+            onDeleted();
             router.refresh();
-            // A full page reload might be better to reflect changes immediately
-            window.location.reload();
         } catch (error) {
             toast({
                 title: "Error deleting story",
                 description: (error as Error).message,
                 variant: "destructive",
             });
+        } finally {
+            setIsOpen(false);
         }
     };
 
     return (
-        <AlertDialog>
+        <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
-                <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent">Delete</div>
+                <div 
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsOpen(true);
+                    }}
+                    className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent text-destructive"
+                >
+                    Delete
+                </div>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
@@ -111,8 +124,18 @@ export const storyColumns: ColumnDef<Story>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const story = row.original
+        cell: ({ row, table }) => {
+            const story = row.original;
+            const router = useRouter();
+
+            const handleDeleted = () => {
+                const data = table.options.data;
+                const newData = data.filter(d => d.id !== story.id);
+                // This is a way to trigger a re-render in the table
+                table.options.meta?.setData(newData);
+                router.refresh();
+            }
+
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -130,7 +153,9 @@ export const storyColumns: ColumnDef<Story>[] = [
                             <Link href={`/admin/stories/edit/${story.slug}`}>Edit Story</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DeleteAction storyId={story.id} />
+                        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+                          <DeleteAction storyId={story.id} onDeleted={handleDeleted} />
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

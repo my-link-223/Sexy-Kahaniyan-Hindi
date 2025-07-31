@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -11,6 +12,7 @@ import {
   SortingState,
   getFilteredRowModel,
   ColumnFiltersState,
+  TableMeta,
 } from "@tanstack/react-table"
 
 import {
@@ -23,16 +25,28 @@ import {
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Category } from "@/lib/data"
 
-interface CategoryDataTableProps<TData, TValue> {
+
+interface CategoryDataTableProps<TData extends Category, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
 
-export function CategoryDataTable<TData, TValue>({
+// Add a meta property to the table to allow updating the data
+// This is useful for optimistic updates after a delete operation
+declare module '@tanstack/react-table' {
+    interface TableMeta<TData extends Category> {
+        setData: React.Dispatch<React.SetStateAction<TData[]>>
+    }
+}
+
+
+export function CategoryDataTable<TData extends Category, TValue>({
   columns,
-  data,
+  data: initialData,
 }: CategoryDataTableProps<TData, TValue>) {
+  const [data, setData] = React.useState(initialData);
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
 
@@ -48,6 +62,9 @@ export function CategoryDataTable<TData, TValue>({
     state: {
         sorting,
         columnFilters
+    },
+    meta: {
+        setData,
     }
   })
 
