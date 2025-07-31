@@ -14,6 +14,15 @@ export type Story = {
   trending: boolean;
 };
 
+export type Category = {
+  id: number;
+  slug: string;
+  title: string;
+  image: string;
+  aiHint: string;
+};
+
+
 export let stories: Story[] = [
   {
     id: 1,
@@ -166,15 +175,15 @@ export let stories: Story[] = [
 
 मैंने उन्हें गोद में उठाया और उनके बेडरूम की तरफ ले गया। बिस्तर पर लिटाकर मैंने उनकी मैक्सी उतार दी। वो मेरे सामने पूरी नंगी थीं। उनका गोरा बदन, बड़े-बड़े स्तन और चिकनी चूत देखकर मेरा लंड लोहे की रॉड बन चुका था। मैंने भी अपने कपड़े उतार दिए।
 
-मेरे 7 इंच के लंड को देखकर उनकी आँखें फ़ैल गयीं। "माय गॉड! ये तो बहुत बड़ा है अमित!"
+मेरे 7 इंच के लंड को देखकर उनकी आँखें फ़ैल गयीं। \"माय गॉड! ये तो बहुत बड़ा है अमित!\"
 
-मैंने मुस्कुराते हुए कहा, "ये सब आपका ही है आंटी।"
+मैंने मुस्कुराते हुए कहा, \"ये सब आपका ही है आंटी।\"
 
-मैं उनके ऊपर आया और उनके स्तनों को चूसने लगा। वो मज़े से कराह रही थीं, "आह... अमित... और ज़ोर से... पी जाओ इन्हें।\" मैं उनके एक स्तन को चूस रहा था और दूसरे को हाथ से दबा रहा था। फिर मैं नीचे गया और उनकी गीली चूत को चाटने लगा। वो तड़प उठीं। \"ओह्ह... अमित... ऐसे तो मैंने कभी नहीं करवाया... आआह्ह्ह..."
+मैं उनके ऊपर आया और उनके स्तनों को चूसने लगा। वो मज़े से कराह रही थीं, \"आह... अमित... और ज़ोर से... पी जाओ इन्हें।\" मैं उनके एक स्तन को चूस रहा था और दूसरे को हाथ से दबा रहा था। फिर मैं नीचे गया और उनकी गीली चूत को चाटने लगा। वो तड़प उठीं। \"ओह्ह... अमित... ऐसे तो मैंने कभी नहीं करवाया... आआह्ह्ह...\"
 
 कुछ ही देर में वो झड़ गयीं। उन्होंने मुझे ऊपर खींचा और बोलीं, \"अब मुझसे और इंतज़ार नहीं होता अमित... प्लीज़... अपनी इस प्यासी आंटी की प्यास बुझा दो।\"
 
-मैंने अपना लंड उनकी चूत पर सेट किया और एक ज़ोरदार धक्का मारा। मेरा पूरा लंड उनकी गर्म और गीली चूत में समा गया। वो ज़ोर से चीखीं, "आआआह्ह्ह... मम्मी... फाड़ दी तूने तो!"
+मैंने अपना लंड उनकी चूत पर सेट किया और एक ज़ोरदार धक्का मारा। मेरा पूरा लंड उनकी गर्म और गीली चूत में समा गया। वो ज़ोर से चीखीं, \"आआआह्ह्ह... मम्मी... फाड़ दी तूने तो!\"
 
 मैं धीरे-धीरे धक्के मारने लगा। कुछ ही देर में उन्हें भी मज़ा आने लगा। वो अपनी गांड उठाकर मेरा साथ देने लगीं। \"और तेज़ अमित... और तेज़... आज फाड़ दो मेरी चूत... बहुत सालों से प्यासी है ये।\"
 
@@ -262,11 +271,11 @@ export let stories: Story[] = [
 
 उसका नाम रिचा था। रिचा देखने में बहुत खूबसूरत थी। उसकी उम्र 19 साल थी, रंग गोरा, काले लंबे बाल थे। उसके होंठ गुलाब की पंखुड़ियों की तरह लाल थे। उसका फिगर मानो रानी मुखर्जी की तरह था - सीना 34 इंच, कमर 28 इंच और हिप लगभग 36 इंच। मेरी नजर जब रिचा पर पड़ी, तो मैं उसे देखता ही रह गया।
 
-उस वक्त मैं प्लेटफार्म की एक बेंच पर बैठा था। वह मेरे पास आने लगी। उसे अपनी तरफ आते देख कर मेरा दिल बड़ी जोर जोर से धड़कने लगा। वो मेरे बाजू में आकर बैठ गई। उस समय मेरी सांसें बहुत जोर जोर से चलने लगी थीं। अब उसने मुझसे बोला- "हैलो, मेरा नाम रिचा है।" साथ ही उसने मुझसे हाथ मिलाने के लिए अपने हाथ को आगे बढ़ा दिया। मैंने भी उससे हाथ मिलाते हुए कहा- "मेरा नाम विराज है।" बातों-बातों में पता चला कि वो मेरी दूर की रिश्तेदार है।
+उस वक्त मैं प्लेटफार्म की एक बेंच पर बैठा था। वह मेरे पास आने लगी। उसे अपनी तरफ आते देख कर मेरा दिल बड़ी जोर जोर से धड़कने लगा। वो मेरे बाजू में आकर बैठ गई। उस समय मेरी सांसें बहुत जोर जोर से चलने लगी थीं। अब उसने मुझसे बोला- "हैलो, मेरा नाम रिचा है।\" साथ ही उसने मुझसे हाथ मिलाने के लिए अपने हाथ को आगे बढ़ा दिया। मैंने भी उससे हाथ मिलाते हुए कहा- "मेरा नाम विराज है।\" बातों-बातों में पता चला कि वो मेरी दूर की रिश्तेदार है।
 
 कुछ देर बाद उसने मेरे बाजू में सर रख दिया। तभी मैंने महसूस किया कि उसका एक स्तन मेरे बाजू से दब रहा है। मैंने अपना फ़ोन निकाला और उसके साथ सेल्फी लेने लगा। वो देखने लगी लेकिन तब भी उसने सीधे बैठने का कोई प्रयास नहीं किया। उसने बस अपने होंठों पर एक मुस्कान बिखेर दी थी। मैंने उसके साथ फोटो खींच ली। अब मैंने देखा कि वो मेरे साथ और ज़्यादा सट कर बैठ गई। उसने मेरा हाथ भी अपने हाथ में पकड़ लिया।
 
-ट्रेन आने पर हम सब बैठ गए। रिचा मेरे सामने वाली सीट पर बैठी थी। उसने जीन्स और शर्ट पहनी हुई थी, जिसमें वो बड़ी कयामत लग रही थी। रात में जब सब सो गए, तो मेरी आंख खुली। मैंने देखा कि रिचा जग रही थी। मुझे जगा हुआ देख कर उसने कहा- "मुझे नींद नहीं आ रही है, आप अपने फोन में मूवी चलाओ, हम लोग साथ में देखते हैं।" मैंने उल्लू एप्प में जाकर एक सेक्सी सी मूवी लगा दी।
+ट्रेन आने पर हम सब बैठ गए। रिचा मेरे सामने वाली सीट पर बैठी थी। उसने जीन्स और शर्ट पहनी हुई थी, जिसमें वो बड़ी कयामत लग रही थी। रात में जब सब सो गए, तो मेरी आंख खुली। मैंने देखा कि रिचा जग रही थी। मुझे जगा हुआ देख कर उसने कहा- "मुझे नींद नहीं आ रही है, आप अपने फोन में मूवी चलाओ, हम लोग साथ में देखते हैं।\" मैंने उल्लू एप्प में जाकर एक सेक्सी सी मूवी लगा दी।
 
 कुछ देर देखने के बाद ही वह गर्म होने लगी, उसकी सांसें तेज चलने लगीं। वह मेरे बगल में ऐसे चिपक कर बैठी थी कि उसका चूचा मेरे कंधे से दब रहा था। उसने मेरी ओर देखा, फिर उसने पूरे डब्बे में नजर घुमाई और देखा कि सभी लोग सो रहे हैं। उसके बाद उसने मुझे किस कर लिया। मेरी हिम्मत जाग गई। मैंने उसके गले में हाथ डाल दिया और उसके एक चूचे को दबाने लगा। उसके चूचे बहुत टाइट थे, मुझे दबाने में बड़ा अच्छा लग रहा था। फिर मैंने उसके होंठ पीना शुरू कर दिए। वह भी मेरे होंठों को चूसने लगी। लगभग 20 मिनट तक हमारा यह सिलसिला चलता रहा।
 
@@ -326,7 +335,6 @@ export let stories: Story[] = [
 मैं नीचे से उन्हें अपनी कमर उठाकर धक्के दे रहा था। कमरे में सिर्फ हमारे शरीरों के टकराने की और सविता की कामुक सिसकारियों की आवाज़ें गूंज रही थीं। हमने कई पोजीशन बदलीं। मैंने उन्हें घोड़ी बनाकर चोदा, लिटाकर चोदा। हर पोजीशन में वो मेरा पूरा साथ दे रही थीं। करीब 45 मिनट की इस तूफानी चुदाई के बाद, हम दोनों एक साथ चरम पर पहुँचे। उन्होंने अपना सारा रस मेरे ऊपर छोड़ दिया और मैं उनकी चूत में ही झड़ गया। हम दोनों थककर एक दूसरे से लिपटे हुए थे। उस दिन के बाद, सविता आंटी की तन्हाई मेरी जवानी की दीवानी हो गई थी।`,
     trending: false,
   },
-  // Add more stories here...
   {
     id: 102,
     slug: 'anjaan-musafir-ka-sath',
@@ -367,7 +375,6 @@ export let stories: Story[] = [
 हम अपनी सीट पर वापस आ गए। उसने अपना सर मेरे कंधे पर रख लिया और मेरा हाथ थाम लिया। रात के बाकी हिस्से में हम ऐसे ही बैठे रहे, एक-दूसरे की मौजूदगी को महसूस करते हुए। उस रात, दो अजनबी मुसाफिर एक-दूसरे के हमसफर बन गए थे। सुबह जब ट्रेन अपनी मंजिल पर पहुँची, तो हम एक-दूसरे से अलग हो गए, लेकिन उस रात की यादें और वो अधूरा रोमांस हमेशा के लिए मेरे दिल में बस गया। वो सफर खत्म हो गया था, पर एक नई कहानी की शुरुआत हो गई थी।`,
     trending: false,
   },
-  // ... continue adding hundreds of stories in this format ...
   {
     id: 600,
     slug: 'gupt-mulakaton-ka-silsila',
@@ -426,35 +433,35 @@ export let stories: Story[] = [
   }
 ];
 
-export const categories = [
-    { title: "आंटी", image: "https://placehold.co/300x400.png", aiHint: 'mature woman' },
-    { title: "अजनबी", image: "https://storage.googleapis.com/gweb-aip-dev.appspot.com/private/us-central1-gcp-testing-365215-42065a4c5a914c24/user_images/93f185b3-34e8-466a-b286-9a2872337d32.png", aiHint: 'strangers meeting' },
-    { title: "देवर-भाभी", image: "https://placehold.co/300x400.png", aiHint: 'family romance' },
-    { title: "पति-पत्नी", image: "https://placehold.co/300x400.png", aiHint: 'husband wife' },
-    { title: "बॉयफ्रेंड-गर्लफ्रेंड", image: "https://placehold.co/300x400.png", aiHint: 'young couple' },
-    { title: "कॉलेज के दोस्त", image: "https://placehold.co/300x400.png", aiHint: 'college friends' },
-    { title: "ऑफिस अफेयर", image: "https://placehold.co/300x400.png", aiHint: 'office romance' },
-    { title: "पड़ोसन", image: "https://placehold.co/300x400.png", aiHint: 'woman looking' },
-    { title: "पहली बार", image: "https://placehold.co/300x400.png", aiHint: 'first time' },
-    { title: "दोस्त", image: "https://placehold.co/300x400.png", aiHint: 'friends talking' },
-    { title: "शादीशुदा महिलाएं", image: "https://placehold.co/300x400.png", aiHint: 'married woman' },
-    { title: "पति की कमी", image: "https://placehold.co/300x400.png", aiHint: 'lonely woman' },
-    { title: "रिश्तेदार", image: "https://placehold.co/300x400.png", aiHint: 'family gathering' },
-    { title: "फैंटेसी", image: "https://placehold.co/300x400.png", aiHint: 'fantasy world' },
-    { title: "गर्मी से भरी रातें", image: "https://placehold.co/300x400.png", aiHint: 'hot night' },
-    { title: "डॉक्टर और मरीज", image: "https://placehold.co/300x400.png", aiHint: 'doctor patient' },
-    { title: "टीचर और स्टूडेंट", image: "https://placehold.co/300x400.png", aiHint: 'teacher student' },
-    { title: "सास और बहू", image: "https://placehold.co/300x400.png", aiHint: 'family argument' },
-    { title: "बड़े भाई और छोटी बहन", image: "https://placehold.co/300x400.png", aiHint: 'sibling bond' },
-    { title: "रूममेट", image: "https://placehold.co/300x400.png", aiHint: 'roommates talk' },
-    { title: "पब्लिक रोमांस", image: "https://placehold.co/300x400.png", aiHint: 'public romance' },
-    { title: "ट्रेन या बस में", image: "https://placehold.co/300x400.png", aiHint: 'train journey' },
-    { title: "कालेज की लास्ट बेंच", image: "https://placehold.co/300x400.png", aiHint: 'college classroom' },
-    { title: "पार्टी और नाइटआउट", image: "https://placehold.co/300x400.png", aiHint: 'party night' },
-    { title: "समर वेकेशन", image: "https://placehold.co/300x400.png", aiHint: 'summer beach' },
-    { title: "फैमिली गेदरिंग", image: "https://placehold.co/300x400.png", aiHint: 'family dinner' },
-    { title: "पति का ऑफिस ट्रिप", image: "https://placehold.co/300x400.png", aiHint: 'business trip' },
-    { title: "रहस्यमय प्रेमी", image: "https://placehold.co/300x400.png", aiHint: 'mysterious man' },
-    { title: "दूसरा प्यार", image: "https://placehold.co/300x400.png", aiHint: 'second chance' },
-    { title: "गुप्त मुलाकातें", image: "https://placehold.co/300x400.png", aiHint: 'secret meeting' },
+export let categories: Category[] = [
+    { id: 1, slug: "aunt", title: "आंटी", image: "https://placehold.co/300x400.png", aiHint: 'mature woman' },
+    { id: 2, slug: "stranger", title: "अजनबी", image: "https://storage.googleapis.com/gweb-aip-dev.appspot.com/private/us-central1-gcp-testing-365215-42065a4c5a914c24/user_images/93f185b3-34e8-466a-b286-9a2872337d32.png", aiHint: 'strangers meeting' },
+    { id: 3, slug: "devar-bhabhi", title: "देवर-भाभी", image: "https://placehold.co/300x400.png", aiHint: 'family romance' },
+    { id: 4, slug: "husband-wife", title: "पति-पत्नी", image: "https://placehold.co/300x400.png", aiHint: 'husband wife' },
+    { id: 5, slug: "bf-gf", title: "बॉयफ्रेंड-गर्लफ्रेंड", image: "https://placehold.co/300x400.png", aiHint: 'young couple' },
+    { id: 6, slug: "college-friends", title: "कॉलेज के दोस्त", image: "https://placehold.co/300x400.png", aiHint: 'college friends' },
+    { id: 7, slug: "office-affair", title: "ऑफिस अफेयर", image: "https://placehold.co/300x400.png", aiHint: 'office romance' },
+    { id: 8, slug: "padosan", title: "पड़ोसन", image: "https://placehold.co/300x400.png", aiHint: 'woman looking' },
+    { id: 9, slug: "first-time", title: "पहली बार", image: "https://placehold.co/300x400.png", aiHint: 'first time' },
+    { id: 10, slug: "friends", title: "दोस्त", image: "https://placehold.co/300x400.png", aiHint: 'friends talking' },
+    { id: 11, slug: "married-women", title: "शादीशुदा महिलाएं", image: "https://placehold.co/300x400.png", aiHint: 'married woman' },
+    { id: 12, slug: "lonely-wife", title: "पति की कमी", image: "https://placehold.co/300x400.png", aiHint: 'lonely woman' },
+    { id: 13, slug: "relatives", title: "रिश्तेदार", image: "https://placehold.co/300x400.png", aiHint: 'family gathering' },
+    { id: 14, slug: "fantasy", title: "फैंटेसी", image: "https://placehold.co/300x400.png", aiHint: 'fantasy world' },
+    { id: 15, slug: "hot-nights", title: "गर्मी से भरी रातें", image: "https://placehold.co/300x400.png", aiHint: 'hot night' },
+    { id: 16, slug: "doctor-patient", title: "डॉक्टर और मरीज", image: "https://placehold.co/300x400.png", aiHint: 'doctor patient' },
+    { id: 17, slug: "teacher-student", title: "टीचर और स्टूडेंट", image: "https://placehold.co/300x400.png", aiHint: 'teacher student' },
+    { id: 18, slug: "saas-bahu", title: "सास और बहू", image: "https://placehold.co/300x400.png", aiHint: 'family argument' },
+    { id: 19, slug: "brother-sister", title: "बड़े भाई और छोटी बहन", image: "https://placehold.co/300x400.png", aiHint: 'sibling bond' },
+    { id: 20, slug: "roommate", title: "रूममेट", image: "https://placehold.co/300x400.png", aiHint: 'roommates talk' },
+    { id: 21, slug: "public-romance", title: "पब्लिक रोमांस", image: "https://placehold.co/300x400.png", aiHint: 'public romance' },
+    { id: 22, slug: "train-bus", title: "ट्रेन या बस में", image: "https://placehold.co/300x400.png", aiHint: 'train journey' },
+    { id: 23, slug: "college-last-bench", title: "कालेज की लास्ट बेंच", image: "https://placehold.co/300x400.png", aiHint: 'college classroom' },
+    { id: 24, slug: "party-nightout", title: "पार्टी और नाइटआउट", image: "https://placehold.co/300x400.png", aiHint: 'party night' },
+    { id: 25, slug: "summer-vacation", title: "समर वेकेशन", image: "https://placehold.co/300x400.png", aiHint: 'summer beach' },
+    { id: 26, slug: "family-gathering", title: "फैमिली गेदरिंग", image: "https://placehold.co/300x400.png", aiHint: 'family dinner' },
+    { id: 27, slug: "husbands-trip", title: "पति का ऑफिस ट्रिप", image: "https://placehold.co/300x400.png", aiHint: 'business trip' },
+    { id: 28, slug: "mysterious-lover", title: "रहस्यमय प्रेमी", image: "https://placehold.co/300x400.png", aiHint: 'mysterious man' },
+    { id: 29, slug: "second-love", title: "दूसरा प्यार", image: "https://placehold.co/300x400.png", aiHint: 'second chance' },
+    { id: 30, slug: "secret-meetings", title: "गुप्त मुलाकातें", image: "https://placehold.co/300x400.png", aiHint: 'secret meeting' },
 ];

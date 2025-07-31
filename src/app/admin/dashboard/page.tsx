@@ -3,7 +3,7 @@ import { Footer } from '@/components/footer';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, Newspaper } from 'lucide-react';
+import { BookOpen, Newspaper, FolderKanban } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   return (
@@ -30,6 +30,21 @@ export default function AdminDashboardPage() {
                 </p>
                 <Button asChild>
                   <Link href="/admin/stories">Go to Stories</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Manage Categories</CardTitle>
+                <FolderKanban className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-muted-foreground mb-4">
+                  Add, edit, or delete categories for the stories.
+                </p>
+                <Button asChild>
+                  <Link href="/admin/categories">Go to Categories</Link>
                 </Button>
               </CardContent>
             </Card>

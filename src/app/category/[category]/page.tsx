@@ -14,14 +14,14 @@ type CategoryPageProps = {
 };
 
 export default function CategoryPage({ params }: CategoryPageProps) {
-  const categoryName = decodeURIComponent(params.category);
-  const category = categories.find((c) => c.title === categoryName);
+  const categorySlug = decodeURIComponent(params.category);
+  const category = categories.find((c) => c.slug === categorySlug);
 
   if (!category) {
     notFound();
   }
 
-  const storiesInCategory = stories.filter((s) => s.category === categoryName);
+  const storiesInCategory = stories.filter((s) => s.category === category.title);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -63,6 +63,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 // This function can be uncommented if you want to statically generate category pages at build time.
 // export async function generateStaticParams() {
 //   return categories.map((category) => ({
-//     category: encodeURIComponent(category.title),
+//     category: category.slug,
 //   }));
 // }

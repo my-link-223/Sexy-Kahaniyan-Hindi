@@ -22,7 +22,7 @@ export default function CategoriesPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
             {categories.map((category) => (
-              <Link href={`/category/${encodeURIComponent(category.title)}`} key={category.title}>
+              <Link href={`/category/${category.slug}`} key={category.id}>
                 <Card className="group overflow-hidden relative text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                   <CardContent className="p-0">
                     <Image
