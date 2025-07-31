@@ -86,7 +86,7 @@ export async function PUT(
         };
 
         categories[categoryIndex] = updatedCategory;
-
+        
         return NextResponse.json(updatedCategory);
 
     } catch (error) {
