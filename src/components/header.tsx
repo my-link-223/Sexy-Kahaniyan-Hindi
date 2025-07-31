@@ -4,6 +4,7 @@ import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 import { SearchInput } from './search-input';
+import { Suspense } from 'react';
 
 const navLinks = [
     { href: "/", label: "Home" },
@@ -30,7 +31,9 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <SearchInput />
+          <Suspense fallback={null}>
+            <SearchInput />
+          </Suspense>
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
