@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,31 @@ interface StoryFormProps {
   initialData?: Story;
   categoryOptions: { value: string; label: string }[];
 }
+
+const StoryContentPreview = ({ control }: { control: any }) => {
+    const content = useWatch({
+      control,
+      name: "content",
+    });
+  
+    const formatContent = (text: string) => {
+        if (!text) return null;
+        return text.split('\n\n').map((paragraph, index) => (
+          <p key={index} className="mb-4 leading-relaxed">
+            {paragraph}
+          </p>
+        ));
+      };
+  
+    return (
+      <div className="mt-4 p-4 border rounded-md bg-muted/20 min-h-[150px]">
+        <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Content Preview</h4>
+        <div className="prose prose-sm dark:prose-invert max-w-none">
+            {formatContent(content)}
+        </div>
+      </div>
+    );
+  };
 
 export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
   const { toast } = useToast();
@@ -298,6 +324,8 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
                 </FormItem>
               )}
             />
+
+            <StoryContentPreview control={form.control} />
             
             <FormField
               control={form.control}
@@ -334,3 +362,5 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
     </Card>
   );
 }
+
+    

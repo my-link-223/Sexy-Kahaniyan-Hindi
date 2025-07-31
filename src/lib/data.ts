@@ -207,7 +207,7 @@ export let stories: Story[] = [
     "category": "आंटी",
     "image": "/uploads/c2363a38-bb0c-446f-9651-95cf4902aa45.png",
     "aiHint": "",
-    "content": "testsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestsettestset",
+    "content": "उन्होंने मेरी आहट महसूस कर ली और मुड़कर मुझे देखा। उनकी आँखों में एक अजीब सी चमक थी। \"नींद नहीं आ रही, देव?\" उनकी आवाज़ में शहद जैसी मिठास थी, लेकिन उसमें एक हल्की सी कँपकँपाहट भी थी, जिसे मैं पहचान नहीं पाया।",
     "trending": true
   }
 ];
