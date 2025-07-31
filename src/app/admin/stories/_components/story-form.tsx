@@ -23,6 +23,8 @@ import { Loader2, Save } from "lucide-react";
 import type { Story } from "@/lib/data";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Image from "next/image";
 
 const formSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters."),
@@ -30,7 +32,8 @@ const formSchema = z.object({
   author: z.string().min(2, "Author name is required."),
   category: z.string({ required_error: "Please select a category." }),
   tags: z.string().min(1, "Please provide at least one tag."),
-  image: z.string().url("Please enter a valid image URL."),
+  image: z.string().optional(),
+  imageDataUri: z.string().optional(),
   aiHint: z.string().optional(),
   content: z.string().min(100, "Story content must be at least 100 characters."),
   trending: z.boolean().default(false),
@@ -47,12 +50,14 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
   const { toast } = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(initialData?.image || null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData ? {
       ...initialData,
       tags: initialData.tags.join(', '),
+      image: initialData.image || '',
     } : {
       title: "",
       slug: "",
@@ -66,9 +71,45 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
     },
   });
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const dataUri = reader.result as string;
+        form.setValue("imageDataUri", dataUri);
+        setImagePreview(dataUri);
+        form.setValue("image", ""); // Clear image URL if a file is selected
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event.target.value;
+    form.setValue("image", url);
+    if (url) {
+        setImagePreview(url);
+        form.setValue("imageDataUri", ""); // Clear image data URI if a URL is entered
+    } else {
+        setImagePreview(null);
+    }
+  }
+
   const onSubmit = async (values: FormValues) => {
     setIsLoading(true);
     try {
+        if (!values.image && !values.imageDataUri) {
+            toast({
+                title: "Image required",
+                description: "Please provide an Image URL or upload an image.",
+                variant: "destructive"
+            });
+            setIsLoading(false);
+            return;
+        }
+
+
       const payload = {
         ...values,
         tags: values.tags.split(',').map(tag => tag.trim()),
@@ -86,7 +127,8 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
 
       toast({
@@ -99,7 +141,7 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
       console.error("Error saving story:", error);
       toast({
         title: "An error occurred.",
-        description: "Unable to save the story. Please try again.",
+        description: (error as Error).message || "Unable to save the story. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -195,19 +237,49 @@ export function StoryForm({ initialData, categoryOptions }: StoryFormProps) {
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="image"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Image URL</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://example.com/image.png" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div>
+                <FormLabel>Cover Image</FormLabel>
+                <Tabs defaultValue="url" className="w-full mt-2">
+                    <TabsList className="grid w-full grid-cols-2">
+                        <TabsTrigger value="url">Image URL</TabsTrigger>
+                        <TabsTrigger value="upload">Upload</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="url">
+                        <FormField
+                            control={form.control}
+                            name="image"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input placeholder="https://example.com/image.png" {...field} onChange={handleUrlChange} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                            />
+                    </TabsContent>
+                    <TabsContent value="upload">
+                         <FormField
+                            control={form.control}
+                            name="imageDataUri"
+                            render={({ field }) => (
+                                <FormItem>
+                                <FormControl>
+                                    <Input type="file" accept="image/*" onChange={handleFileChange} />
+                                </FormControl>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                            />
+                    </TabsContent>
+                </Tabs>
+                {imagePreview && (
+                    <div className="mt-4">
+                        <p className="text-sm font-medium mb-2">Image Preview:</p>
+                        <Image src={imagePreview} alt="Preview" width={200} height={150} className="rounded-md object-cover border" />
+                    </div>
+                )}
+            </div>
             
             <FormField
               control={form.control}
