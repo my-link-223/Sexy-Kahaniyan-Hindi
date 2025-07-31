@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { stories } from '@/lib/data';
+import { readData, writeData } from '@/lib/data-persistence';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs/promises';
@@ -47,6 +47,7 @@ export async function GET(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { stories } = await readData();
     const id = parseInt(params.id, 10);
     const story = stories.find((s) => s.id === id);
 
@@ -60,6 +61,7 @@ export async function PUT(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { stories, categories } = await readData();
     const id = parseInt(params.id, 10);
     const storyIndex = stories.findIndex((s) => s.id === id);
 
@@ -85,7 +87,6 @@ export async function PUT(
             return NextResponse.json({ error: 'Image is required' }, { status: 400 });
         }
 
-
         const updatedStory = {
             id,
             slug: updatedStoryData.slug,
@@ -101,7 +102,10 @@ export async function PUT(
             trending: updatedStoryData.trending,
         };
 
-        stories[storyIndex] = updatedStory;
+        const updatedStories = [...stories];
+        updatedStories[storyIndex] = updatedStory;
+        
+        await writeData(updatedStories, categories);
 
         return NextResponse.json(updatedStory);
 
@@ -119,6 +123,7 @@ export async function DELETE(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { stories, categories } = await readData();
     const id = parseInt(params.id, 10);
     const storyIndex = stories.findIndex((s) => s.id === id);
 
@@ -127,6 +132,8 @@ export async function DELETE(
     }
 
     const deletedStory = stories.splice(storyIndex, 1);
+    
+    await writeData(stories, categories);
 
     return NextResponse.json(deletedStory[0]);
 }

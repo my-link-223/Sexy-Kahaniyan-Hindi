@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { stories } from '@/lib/data';
+import { readData, writeData } from '@/lib/data-persistence';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs/promises';
@@ -47,11 +47,13 @@ const storySchema = z.object({
 });
 
 export async function GET() {
+  const { stories } = await readData();
   return NextResponse.json(stories);
 }
 
 export async function POST(request: Request) {
   try {
+    const { stories, categories } = await readData();
     const json = await request.json();
     const newStoryData = storySchema.parse(json);
 
@@ -84,7 +86,8 @@ export async function POST(request: Request) {
       trending: newStoryData.trending,
     };
 
-    stories.push(newStory);
+    const updatedStories = [...stories, newStory];
+    await writeData(updatedStories, categories);
 
     return NextResponse.json(newStory, { status: 201 });
   } catch (error) {

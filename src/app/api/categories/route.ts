@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { categories } from '@/lib/data';
+import { readData, writeData } from '@/lib/data-persistence';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs/promises';
@@ -36,11 +36,13 @@ const categorySchema = z.object({
 });
 
 export async function GET() {
+  const { categories } = await readData();
   return NextResponse.json(categories);
 }
 
 export async function POST(request: Request) {
   try {
+    const { stories, categories } = await readData();
     const json = await request.json();
     const newCategoryData = categorySchema.parse(json);
 
@@ -66,7 +68,8 @@ export async function POST(request: Request) {
       aiHint: newCategoryData.aiHint || '',
     };
 
-    categories.push(newCategory);
+    const updatedCategories = [...categories, newCategory];
+    await writeData(stories, updatedCategories);
 
     return NextResponse.json(newCategory, { status: 201 });
   } catch (error) {

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { categories } from '@/lib/data';
+import { readData, writeData } from '@/lib/data-persistence';
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs/promises';
@@ -38,6 +38,7 @@ export async function GET(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { categories } = await readData();
     const id = parseInt(params.id, 10);
     const category = categories.find((c) => c.id === id);
 
@@ -51,6 +52,7 @@ export async function PUT(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { stories, categories } = await readData();
     const id = parseInt(params.id, 10);
     const categoryIndex = categories.findIndex((c) => c.id === id);
 
@@ -85,7 +87,10 @@ export async function PUT(
             aiHint: updatedCategoryData.aiHint || '',
         };
 
-        categories[categoryIndex] = updatedCategory;
+        const updatedCategories = [...categories];
+        updatedCategories[categoryIndex] = updatedCategory;
+        
+        await writeData(stories, updatedCategories);
         
         return NextResponse.json(updatedCategory);
 
@@ -103,6 +108,7 @@ export async function DELETE(
     request: Request,
     { params }: { params: { id: string } }
 ) {
+    const { stories, categories } = await readData();
     const id = parseInt(params.id, 10);
     const categoryIndex = categories.findIndex((c) => c.id === id);
 
@@ -111,6 +117,7 @@ export async function DELETE(
     }
 
     const deletedCategory = categories.splice(categoryIndex, 1);
+    await writeData(stories, categories);
 
     return NextResponse.json(deletedCategory[0]);
 }
