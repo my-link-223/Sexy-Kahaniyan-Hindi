@@ -10,6 +10,7 @@ import { FontSizeAdjuster } from "./font-size-adjuster";
 import { cn } from "@/lib/utils";
 import { Bookmark, Calendar, Heart, MessageCircle, UserCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { AdBanner } from "@/components/ad-banner";
 
 type StoryPageClientProps = {
   story: Story;
@@ -76,6 +77,8 @@ export function StoryPageClient({ story, relatedStories }: StoryPageClientProps)
           <div className={cn("font-body", fontSize)}>
              {formatContent(story.content)}
           </div>
+          
+          <AdBanner />
 
           <div className="my-8 h-px bg-border"></div>
 

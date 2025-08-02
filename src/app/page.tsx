@@ -15,6 +15,7 @@ import { categories, stories } from '@/lib/data';
 import { StoryCard } from '@/components/story-card';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { AdBanner } from '@/components/ad-banner';
 
 export default function Home() {
   const trendingStories = stories.filter((story) => story.trending);
@@ -134,6 +135,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        <AdBanner />
 
         <section id="subscribe" className="py-16 bg-gradient-to-t from-background to-secondary/20">
           <div className="container text-center max-w-2xl">

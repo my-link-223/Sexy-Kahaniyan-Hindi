@@ -6,6 +6,7 @@ import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+import { AdBanner } from '@/components/ad-banner';
 
 type CategoryPageProps = {
   params: {
@@ -41,11 +42,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           </header>
 
           {storiesInCategory.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {storiesInCategory.map((story) => (
-                <StoryCard key={story.id} story={story} />
-              ))}
-            </div>
+            <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {storiesInCategory.map((story) => (
+                    <StoryCard key={story.id} story={story} />
+                ))}
+                </div>
+                <AdBanner />
+            </>
           ) : (
             <div className="text-center py-16">
               <p className="text-muted-foreground text-lg">

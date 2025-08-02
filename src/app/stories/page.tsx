@@ -2,6 +2,7 @@ import { stories } from '@/lib/data';
 import { StoryCard } from '@/components/story-card';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { AdBanner } from '@/components/ad-banner';
 
 export default function AllStoriesPage() {
   return (
@@ -23,6 +24,7 @@ export default function AllStoriesPage() {
               <StoryCard key={story.id} story={story} />
             ))}
           </div>
+          <AdBanner />
         </div>
       </main>
       <Footer />

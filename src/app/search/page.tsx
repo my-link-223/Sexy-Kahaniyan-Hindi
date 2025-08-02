@@ -4,6 +4,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Suspense } from 'react';
 import { getTransliteratedQuery } from './actions';
+import { AdBanner } from '@/components/ad-banner';
 
 async function SearchResults({ query }: { query: string }) {
   const decodedQuery = decodeURIComponent(query || '');
@@ -55,11 +56,14 @@ async function SearchResults({ query }: { query: string }) {
       </header>
 
       {uniqueResults.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {uniqueResults.map((story) => (
-            <StoryCard key={story.id} story={story} />
-          ))}
-        </div>
+        <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {uniqueResults.map((story) => (
+                <StoryCard key={story.id} story={story} />
+            ))}
+            </div>
+            <AdBanner />
+        </>
       ) : (
         <div className="text-center py-16">
           <p className="text-muted-foreground text-lg">
